@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package increment;
+
+option go_package = "https://main.com/increment";
+
+message IncrementRequest {
+    int64 value = 1;
+}
+
+message IncrementResponse {
+    bool success = 1;
+    int64 before = 2;
+}
+
+message UptimeRequest {
+
+}
+
+message UptimeResponse {
+    int64 uptime = 1;
+}
+
+service Incrementor {
+    rpc Increment(IncrementRequest) returns (IncrementResponse);
+    rpc Uptime(UptimeRequest) returns (UptimeResponse);
+}
